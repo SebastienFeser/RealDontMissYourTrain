@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour {
     [SerializeField] private Rigidbody2D playerRigidBody;
-    [SerializeField] private float playerMovementSpeed = 1.5f;
+    [SerializeField] public float playerMovementSpeed = 1.5f;
     [SerializeField] private float playerJumpForce = 20;
     private bool isGrounded;
     [SerializeField] private CapsuleCollider2D bodyColliderTrigger;
     [SerializeField] private BoxCollider2D groundCollider;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private LayerMask ground;
+    private float levelLimit = 8f;
 
     Vector2 size;
 
@@ -23,9 +24,11 @@ public class PlayerMovements : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      
+        //Left Right movements
         float speedx = Input.GetAxisRaw("Horizontal") * playerMovementSpeed;
         playerRigidBody.velocity = new Vector2(speedx, playerRigidBody.velocity.y);
+
+        //Jump movements
         isGrounded = Physics2D.OverlapBox(transform.position + new Vector3(0, -size.y / 2, 0), new Vector2(size.x, 0.05f), 0, ground );
         if(isGrounded)
         {
@@ -36,13 +39,14 @@ public class PlayerMovements : MonoBehaviour {
             
         }
 
-        if (transform.position.x >= 8f)
+        //Level Limit
+        if (transform.position.x >= levelLimit)
             {
-                transform.position = new Vector2(8f, transform.position.y);
+                transform.position = new Vector2(levelLimit, transform.position.y);
             }
-        if (transform.position.x <= -8f)
+        if (transform.position.x <= -levelLimit)
             {
-                transform.position = new Vector2(-8f, transform.position.y);
+                transform.position = new Vector2(-levelLimit, transform.position.y);
             }
          
         

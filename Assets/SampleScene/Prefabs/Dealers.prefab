@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4269187271443596}
   - component: {fileID: 50345593900786012}
   - component: {fileID: 61884123213062330}
+  - component: {fileID: 114199423082486512}
   m_Layer: 0
   m_Name: Dealers
   m_TagString: Enemy
@@ -52,7 +53,7 @@ Transform:
   m_GameObject: {fileID: 1554169305170792}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4269187271443596}
   m_RootOrder: 0
@@ -65,7 +66,7 @@ Transform:
   m_GameObject: {fileID: 1784849327547022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 2, y: 4, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_Children:
   - {fileID: 4041229768769744}
   m_Father: {fileID: 0}
@@ -87,7 +88,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -116,6 +117,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114199423082486512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784849327547022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22941cfb2166e65458ffe5045afb9b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212574767793812544
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -151,8 +163,8 @@ SpriteRenderer:
   m_SortingLayerID: 429749415
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f44ac04c4ab52db4882e191ad057c7d7, type: 3}
-  m_Color: {r: 0, g: 0.008930683, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ed4de05c49e319149bd8a38adbb561f5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

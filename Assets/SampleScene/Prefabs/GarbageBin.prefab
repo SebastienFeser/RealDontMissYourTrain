@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4881073777938180}
   - component: {fileID: 50474978706804378}
   - component: {fileID: 61938861919968124}
+  - component: {fileID: 114250619427693284}
   m_Layer: 0
   m_Name: GarbageBin
   m_TagString: Enemy
@@ -81,7 +82,7 @@ Transform:
   m_GameObject: {fileID: 1780553228962736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2.5, z: 1}
+  m_LocalScale: {x: 1.5, y: 2, z: 1}
   m_Children:
   - {fileID: 4990042760772460}
   - {fileID: 4396140897345880}
@@ -96,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 1752852700683512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 1}
   m_Children: []
   m_Father: {fileID: 4881073777938180}
   m_RootOrder: 0
@@ -117,7 +118,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -171,6 +172,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114250619427693284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780553228962736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677fdecdf98c81b4980fdb0d39ba61b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212787678785662606
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -206,8 +218,8 @@ SpriteRenderer:
   m_SortingLayerID: 429749415
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f44ac04c4ab52db4882e191ad057c7d7, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f72fa2693ae954d458d04fb4cc34cf16, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

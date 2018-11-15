@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerTriggers : MonoBehaviour {
 
+    [SerializeField] private GameObject garbageBin;
+    [SerializeField] private GameObject streetFundraiser;
+    [SerializeField] private GameObject dealer;
+    [SerializeField] private LevelClass levelClass;
+
 
 	// Use this for initialization
 	void Start () {
@@ -15,11 +20,25 @@ public class PlayerTriggers : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject == )
+        //Debug.Log("collision");
+        //Debug.Log(collision.gameObject);
+        if(collision.gameObject == garbageBin.gameObject)
+        {
+            //levelClass.levelSpeed = 0f;
+            Debug.Log("lol");
+        }
+
+        if(collision.gameObject == streetFundraiser.gameObject)
         {
 
         }
-    }
+
+        if(collision.gameObject == dealer.gameObject)
+        {
+
+        }
+            
+    } */
 }

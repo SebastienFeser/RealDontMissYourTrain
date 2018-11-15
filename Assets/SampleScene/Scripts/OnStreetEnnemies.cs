@@ -9,9 +9,9 @@ public class OnStreetEnnemies : MonoBehaviour {
     [SerializeField] private GameObject garbageBin;
     [SerializeField] private GameObject streetFundraiser;
     [SerializeField] private GameObject dealer;
-    private Vector2 spawnPosition = new Vector2(11f, -2.4f);
+    private Vector2 spawnPosition = new Vector2(11f, -2.6f);
     public bool canRespawn = false;
-    private Vector2 enemySpawnDifference = new Vector2(0, 0.7f);
+    private Vector2 enemySpawnDifference = new Vector2(0, 0.5f);
     private bool spawnCondition = true;
     private GameObject Enemy;
 
