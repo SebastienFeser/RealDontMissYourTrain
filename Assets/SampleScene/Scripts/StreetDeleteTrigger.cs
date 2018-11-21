@@ -19,7 +19,6 @@ public class StreetDeleteTrigger : MonoBehaviour {
     {
         if (collision.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
             onStreetEnnemies.canRespawn = true;
         }
     }

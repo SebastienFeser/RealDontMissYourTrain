@@ -12,6 +12,7 @@ public class LevelClass : MonoBehaviour {
     public int levelSize;
     //SpawnRules
     //Spawnable ennemies
+    public float playerAcceleration = 8f;
 
     
 
@@ -33,7 +34,6 @@ public class LevelClass : MonoBehaviour {
         }
 
         //Mélange de la liste
-       
 
         
 

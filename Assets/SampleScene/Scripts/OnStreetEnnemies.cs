@@ -18,6 +18,7 @@ public class OnStreetEnnemies : MonoBehaviour {
     // Use this for initialization
     void Start () {
         levelClass = FindObjectOfType<LevelClass>();
+
 	}
 	
 	// Update is called once per frame
@@ -38,11 +39,12 @@ public class OnStreetEnnemies : MonoBehaviour {
         if(levelClass.levelSpeed != actualSpeed)
             GroundEnemySpeed();
 
-        if (canRespawn == true)
+        if (canRespawn)
         {
             spawnCondition = true;
             canRespawn = false;
             actualSpeed = 0;
+            Destroy(Enemy);
         }
 
     }

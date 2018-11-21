@@ -13,6 +13,13 @@ public class PlayerMovements : MonoBehaviour {
     [SerializeField] private LayerMask ground;
     private float levelLimit = 8f;
 
+    public enum PlayerMovementState
+    {
+        NORMAL,
+        PUNCH
+    }
+    public PlayerMovementState playerState = PlayerMovementState.NORMAL;
+
     Vector2 size;
 
 	// Use this for initialization
@@ -28,7 +35,7 @@ public class PlayerMovements : MonoBehaviour {
         float speedx = Input.GetAxisRaw("Horizontal") * playerMovementSpeed;
         playerRigidBody.velocity = new Vector2(speedx, playerRigidBody.velocity.y);
 
-        //Jump movements
+        //Jump Box
         isGrounded = Physics2D.OverlapBox(transform.position + new Vector3(0, -size.y / 2, 0), new Vector2(size.x, 0.05f), 0, ground );
         if(isGrounded)
         {
@@ -48,21 +55,24 @@ public class PlayerMovements : MonoBehaviour {
             {
                 transform.position = new Vector2(-levelLimit, transform.position.y);
             }
+
+        //Punch
+        if (Input.GetButtonDown("Punch"))
+        {
+            Debug.Log("punch");
+            playerState = PlayerMovementState.PUNCH;
+
+        }
+        if (Input.GetButtonUp("Punch"))
+        {
+            Debug.Log("unpunch");
+            playerState = PlayerMovementState.NORMAL;
+        }
+
          
         
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        { 
-            if (Input.GetButtonDown("Jump"))
-            {
-                playerRigidBody.AddForce(new Vector2(playerRigidBody.velocity.x, playerJumpForce));
-            }
-        }
-    }
 
    
 

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4269187271443596}
   - component: {fileID: 50345593900786012}
   - component: {fileID: 61884123213062330}
-  - component: {fileID: 114199423082486512}
+  - component: {fileID: 114510283193424984}
   m_Layer: 0
   m_Name: Dealers
   m_TagString: Enemy
@@ -117,7 +117,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114199423082486512
+--- !u!114 &114510283193424984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784849327547022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22941cfb2166e65458ffe5045afb9b79, type: 3}
+  m_Script: {fileID: 11500000, guid: 644cc0a8f7779154881c5a5a1d80f70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212574767793812544

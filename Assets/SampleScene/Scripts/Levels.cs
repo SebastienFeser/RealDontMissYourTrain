@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Levels : MonoBehaviour {
     [SerializeField]private int actualLevel;
@@ -22,7 +23,7 @@ public class Levels : MonoBehaviour {
 
     [SerializeField]private float level1countDown;
     [SerializeField]private float level1Speed;
-    [SerializeField] private int level1Size;
+    [SerializeField]private int level1Size;
     // Use this for initialization
     void Start () {
         levelClass = GetComponent<LevelClass>();
@@ -108,6 +109,8 @@ public class Levels : MonoBehaviour {
         if (actualTile.transform.position.x <= -34 && levelClass.levelSpeed != 0)
         {
             levelClass.levelSpeed = 0;
+            SceneManager.LoadScene("Victory");
+
         }
 		
 	}

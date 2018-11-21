@@ -4,41 +4,119 @@ using UnityEngine;
 
 public class PlayerTriggers : MonoBehaviour {
 
-    [SerializeField] private GameObject garbageBin;
-    [SerializeField] private GameObject streetFundraiser;
-    [SerializeField] private GameObject dealer;
-    [SerializeField] private LevelClass levelClass;
+    private LevelClass level;
+    private PlayerMovements playerMovements;
+    private float timeWhenCollision;
+    private float timeCooldownOnCollision = 3f;
+    private float levelSpeedSave;
+    private float playerMovementSave;
+	
+    public enum PlayerOnEnemyStates
+    {
+        NORMAL,
+        ACCELERATION,
 
+        //Ground enemies
+        GROUND_ENEMY_HIT,
+        STOP_TIME,
+        END_STOP_TIME,
+        
 
-	// Use this for initialization
+        //Garbage bin
+        GARBAGE_BIN_HIT,
+        DECELERATION,
+
+        //Flying enemies
+
+    }
+
+    public PlayerOnEnemyStates playerState = PlayerOnEnemyStates.NORMAL;
+
 	void Start () {
-		
+        level = FindObjectOfType<LevelClass>();
+        playerMovements = FindObjectOfType<PlayerMovements>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
-		
+	switch (playerState)
+        {
+            case PlayerOnEnemyStates.NORMAL:
+                break;
+            case PlayerOnEnemyStates.GROUND_ENEMY_HIT:
+                GroundEnemyHit();
+                break;
+            case PlayerOnEnemyStates.STOP_TIME:
+                StopTime();
+                break;
+            case PlayerOnEnemyStates.END_STOP_TIME:
+                EndStopTime();
+                break;
+            case PlayerOnEnemyStates.ACCELERATION:
+                Acceleration();
+                break;
+            case PlayerOnEnemyStates.GARBAGE_BIN_HIT:
+                GarbageBinHit();
+                break;
+            case PlayerOnEnemyStates.DECELERATION:
+                Deceleration();
+                break;
+
+        }
 	}
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    void GroundEnemyHit()
     {
-        //Debug.Log("collision");
-        //Debug.Log(collision.gameObject);
-        if(collision.gameObject == garbageBin.gameObject)
+        levelSpeedSave = level.levelSpeed;
+        playerMovementSave = playerMovements.playerMovementSpeed;
+        level.levelSpeed = 0;
+        playerMovements.playerMovementSpeed = 0;
+        timeWhenCollision = Time.timeSinceLevelLoad;
+        playerState = PlayerOnEnemyStates.STOP_TIME;
+
+    }
+
+    void StopTime()
+    {
+        if (Time.timeSinceLevelLoad - timeWhenCollision >= timeCooldownOnCollision)
         {
-            //levelClass.levelSpeed = 0f;
-            Debug.Log("lol");
+            playerState = PlayerOnEnemyStates.END_STOP_TIME;
         }
+    }
 
-        if(collision.gameObject == streetFundraiser.gameObject)
+    void EndStopTime()
+    {
+        playerState = PlayerOnEnemyStates.ACCELERATION;
+    }
+
+    void Acceleration()
+    {
+        level.levelSpeed = level.levelSpeed - level.playerAcceleration * Time.deltaTime;
+        if (level.levelSpeed <= levelSpeedSave)
         {
-
+            level.levelSpeed = levelSpeedSave;
+            playerMovements.playerMovementSpeed = playerMovementSave;
+            playerState = PlayerOnEnemyStates.NORMAL;
         }
+    }
 
-        if(collision.gameObject == dealer.gameObject)
+    private void GarbageBinHit()
+    {
+        levelSpeedSave = level.levelSpeed;
+        playerMovementSave = playerMovements.playerMovementSpeed;
+        playerMovements.playerMovementSpeed = 0;
+        playerState = PlayerOnEnemyStates.DECELERATION;
+    }
+
+    private void Deceleration()
+    {
+        level.levelSpeed = level.levelSpeed + level.playerAcceleration * Time.deltaTime;
+        if (level.levelSpeed >= 0)
         {
-
+            level.levelSpeed = 0;
+            playerState = PlayerOnEnemyStates.ACCELERATION;
         }
-            
-    } */
+    }
+
+
 }
