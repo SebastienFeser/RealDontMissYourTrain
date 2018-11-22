@@ -10,6 +10,7 @@ public class PlayerTriggers : MonoBehaviour {
     private float timeCooldownOnCollision = 3f;
     private float levelSpeedSave;
     private float playerMovementSave;
+    private Animator playerAnimator;
 	
     public enum PlayerOnEnemyStates
     {
@@ -35,6 +36,7 @@ public class PlayerTriggers : MonoBehaviour {
 	void Start () {
         level = FindObjectOfType<LevelClass>();
         playerMovements = FindObjectOfType<PlayerMovements>();
+        playerAnimator = GetComponentInChildren<Animator>();
 	}
 	
 	
@@ -42,6 +44,7 @@ public class PlayerTriggers : MonoBehaviour {
 	switch (playerState)
         {
             case PlayerOnEnemyStates.NORMAL:
+                
                 break;
             case PlayerOnEnemyStates.GROUND_ENEMY_HIT:
                 GroundEnemyHit();
@@ -53,9 +56,11 @@ public class PlayerTriggers : MonoBehaviour {
                 EndStopTime();
                 break;
             case PlayerOnEnemyStates.ACCELERATION:
+                
                 Acceleration();
                 break;
             case PlayerOnEnemyStates.GARBAGE_BIN_HIT:
+                
                 GarbageBinHit();
                 break;
             case PlayerOnEnemyStates.DECELERATION:
@@ -72,6 +77,7 @@ public class PlayerTriggers : MonoBehaviour {
         level.levelSpeed = 0;
         playerMovements.playerMovementSpeed = 0;
         timeWhenCollision = Time.timeSinceLevelLoad;
+        playerAnimator.SetBool("PlayerStopped", true);
         playerState = PlayerOnEnemyStates.STOP_TIME;
 
     }
@@ -86,6 +92,8 @@ public class PlayerTriggers : MonoBehaviour {
 
     void EndStopTime()
     {
+        playerAnimator.SetBool("PlayerStopped", false);
+        playerAnimator.SetBool("PlayerInvincibility", true);
         playerState = PlayerOnEnemyStates.ACCELERATION;
     }
 
@@ -96,6 +104,8 @@ public class PlayerTriggers : MonoBehaviour {
         {
             level.levelSpeed = levelSpeedSave;
             playerMovements.playerMovementSpeed = playerMovementSave;
+            
+            playerAnimator.SetBool("PlayerInvincibility", false);
             playerState = PlayerOnEnemyStates.NORMAL;
         }
     }
@@ -105,6 +115,7 @@ public class PlayerTriggers : MonoBehaviour {
         levelSpeedSave = level.levelSpeed;
         playerMovementSave = playerMovements.playerMovementSpeed;
         playerMovements.playerMovementSpeed = 0;
+        playerAnimator.SetBool("PlayerDecelerating", true);
         playerState = PlayerOnEnemyStates.DECELERATION;
     }
 
@@ -114,6 +125,8 @@ public class PlayerTriggers : MonoBehaviour {
         if (level.levelSpeed >= 0)
         {
             level.levelSpeed = 0;
+            playerAnimator.SetBool("PlayerDecelerating", false);
+            playerAnimator.SetBool("PlayerInvincibility", true);
             playerState = PlayerOnEnemyStates.ACCELERATION;
         }
     }

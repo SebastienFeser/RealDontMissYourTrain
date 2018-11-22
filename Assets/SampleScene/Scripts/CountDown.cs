@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CountDown : MonoBehaviour {
     LevelClass levelClass;
     float countDown;
+    [SerializeField] TextMeshProUGUI countDownDisplayer;
 
 	// Use this for initialization
 	void Start () {
@@ -22,9 +24,11 @@ public class CountDown : MonoBehaviour {
             SceneManager.LoadScene("GameOver");
             
         }
-        
-		
-	}
+        countDownDisplayer.text = "Time Left: " + countDown.ToString("n1");
+
+
+
+    }
 
 
 }
