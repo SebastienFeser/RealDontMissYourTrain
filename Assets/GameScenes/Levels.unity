@@ -1072,7 +1072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2162813c292fe448afd89ffc80fa0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidBody: {fileID: 449996936}
   playerMovementSpeed: 5
   playerJumpForce: 800
   bodyColliderTrigger: {fileID: 2127308318}

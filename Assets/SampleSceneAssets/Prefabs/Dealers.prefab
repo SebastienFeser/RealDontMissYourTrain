@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4041229768769744}
   - component: {fileID: 212574767793812544}
+  - component: {fileID: 95716983195297632}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -213,6 +214,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95716983195297632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554169305170792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9a41ee38c909e448839806b6f33ece8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114510283193424984
 MonoBehaviour:
   m_ObjectHideFlags: 1

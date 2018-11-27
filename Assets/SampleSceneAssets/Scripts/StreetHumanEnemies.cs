@@ -11,6 +11,7 @@ public class StreetHumanEnemies : MonoBehaviour {
     private float timeCooldown = 3f;
     private float levelSpeedSave;   //saves the level speed, used when it's changed
     private float playerMovementSave;   //saves player movements, used when it's changed
+    private Animator humanEnemiesAnimator;
 
     private AudioSource HumanEnemiesAudioSource;
     [SerializeField] private AudioClip helloAudio;
@@ -36,6 +37,7 @@ public class StreetHumanEnemies : MonoBehaviour {
         playerScript = FindObjectOfType<PlayerScript>();
         HumanEnemiesAudioSource = GetComponent<AudioSource>();
         playerTriggers = FindObjectOfType<PlayerScript>();
+        humanEnemiesAnimator = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
@@ -47,7 +49,7 @@ public class StreetHumanEnemies : MonoBehaviour {
             case StreetFundraiserState.PUNCHED: //useless state for now
                 Punched();
                 break;
-            case StreetFundraiserState.STUN:    //useless state for now
+            case StreetFundraiserState.STUN:
                 Stun();
                 break;
         }
@@ -83,6 +85,6 @@ public class StreetHumanEnemies : MonoBehaviour {
 
     void Stun()
     {
-
+        humanEnemiesAnimator.SetBool("IsStun", true);
     }
 }
